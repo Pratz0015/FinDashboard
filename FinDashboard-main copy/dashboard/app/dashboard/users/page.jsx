@@ -14,29 +14,29 @@ const UsersPage = () => {
   const dispatch = useDispatch();
 
   const [searchTerm, setSearchTerm] = useState("");
-    const [filteredUsers, setFilteredUsers] = useState(users);
+  //   const [filteredUsers, setFilteredUsers] = useState(users);
 
-  const handleSearch = ((e) => {
-    const searchTerm = e.target.value.toLowerCase();
-    const filteredUsers = users.filter((user) => {
-      return (
-        user.name.toLowerCase().includes(searchTerm) ||
-        user.email.toLowerCase().includes(searchTerm)
-      );
-    });
-    setFilteredUsers(filteredUsers);
-  }, 500);
+  // const handleSearch = ((e) => {
+  //   const searchTerm = e.target.value.toLowerCase();
+  //   const filteredUsers = users.filter((user) => {
+  //     return (
+  //       user.name.toLowerCase().includes(searchTerm) ||
+  //       user.email.toLowerCase().includes(searchTerm)
+  //     );
+  //   });
+  //   setFilteredUsers(filteredUsers);
+  // }, 500);
 
-//   const handleSearch = (e) => {
-//     setSearchTerm(e.target.value);
-//   };
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value);
+  };
 
-//   const filteredUsers = users.filter((user) => {
-//     return (
-//       user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-//       user.email.toLowerCase().includes(searchTerm.toLowerCase())
-//     );
-//   });
+  const filteredUsers = users.filter((user) => {
+    return (
+      user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      user.email.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  });
 
   const handleDeleteUser = (id) => {
     dispatch(setUsers(users.filter((user) => user.id !== id)));
